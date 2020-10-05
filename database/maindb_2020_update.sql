@@ -1,0 +1,7 @@
+ALTER TABLE `purchases` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `remarks`, ADD `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `created_at`; 
+ALTER TABLE `purchases_item` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `invoice`, ADD `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `created_at`;
+ALTER TABLE `sales_order`  ADD `sale_id` INT(11) NULL  AFTER `transaction_id`;
+ALTER TABLE `sales_order` ADD `status` TINYINT NOT NULL DEFAULT '0' AFTER `paid`;
+CREATE TABLE `ledger` ( `ledger_id` INT(11) NOT NULL AUTO_INCREMENT , `user_id` INT(11) NOT NULL , `invoice_no` VARCHAR(100) NOT NULL , `amount` VARCHAR(100) NULL , `paid` VARCHAR(100) NULL , `balance` VARCHAR(100) NULL , `arrear` VARCHAR(100) NULL , `status` TINYINT NOT NULL DEFAULT '1' , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`ledger_id`)) ENGINE = InnoDB;
+ALTER TABLE `ledger`  ADD `trans_id` VARCHAR(110) NULL  AFTER `balance`;
+ALTER TABLE `ledger` ADD `customer_name` VARCHAR(100) NULL AFTER `invoice_no`, ADD `customer_phone` VARCHAR(100) NULL AFTER `customer_name`; 
