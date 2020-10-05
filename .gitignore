@@ -1,0 +1,4 @@
+*.sql
+*.zip
+error_log
+/main/error_log
